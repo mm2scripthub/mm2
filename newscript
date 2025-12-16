@@ -4,7 +4,7 @@ local function script()
     if placeId == 920587237 then
         loadstring(game:HttpGet("https://pastefy.app/El1CXXJu/raw"))()
     else
-        loadstring(game:HttpGet("https://paste.debian.net/plainh/63184c9e/", true))()
+        loadstring(game:HttpGet("https://pastefy.app/BbU8DvJo/raw", true))()
     end
 end
 
