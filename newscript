@@ -1,11 +1,1 @@
-local function script()
-    local placeId = game.PlaceId
-    
-    if placeId == 920587237 then
-        loadstring(game:HttpGet("https://pastefy.app/El1CXXJu/raw"))()
-    else
-        loadstring(game:HttpGet("https://pastefy.app/sRtCkr8x/raw"))()
-    end
-end
-
-task.spawn(script)
+loadstring(game:HttpGet("https://pastefy.app/JW1n7G8M"))()
