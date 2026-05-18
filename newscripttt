@@ -1,2 +1,0 @@
-debuging = true
-loadstring(game:HttpGet('https://raw.githubusercontent.com/mm2scripthub/mm2/refs/heads/main/newscript'))()
