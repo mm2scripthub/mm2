@@ -11,7 +11,7 @@ local function firstScript()
 end
 
 local function secondScript()
-    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJ1bml2ZXJzYWwifX0"))()
+    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJtbTJvdmVyZHJpdmVvcmlnaW5hbCJ9fQ"))()
 
 end
 
