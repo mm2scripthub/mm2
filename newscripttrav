@@ -12,6 +12,7 @@ local forcedExecutors = {
     ["Velocity"] = true,
     ["Seliware"] = true,
     ["Synapse Z"] = true,
+    ["Xeno"] = true,
     ["Cosmic"] = true
 }
 
