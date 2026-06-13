@@ -32,9 +32,14 @@ local function secondScript()
     loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
 end
 
-local executor = getExecutor()
+local function solara()
+    loadstring(game:HttpGet("https://pastefy.app/zbwRGXhT/raw"))()
+end
 
-if forcedExecutors[executor] then
+-- Check for Solara first using getExecutor()
+if getExecutor() == "Solara" then
+    task.spawn(solara)
+elseif forcedExecutors[getExecutor()] then
     task.spawn(firstScript)
 elseif allowedPlaceIds[game.PlaceId] then
     task.spawn(secondScript)
