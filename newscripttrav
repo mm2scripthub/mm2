@@ -7,12 +7,8 @@ local allowedPlaceIds = {
 }
 
 local forcedExecutors = {
-    ["Volt"] = true,
-    ["Solara"] = true,
-    ["Velocity"] = true,
     ["Seliware"] = true,
     ["Synapse Z"] = true,
-    ["Xeno"] = true,
     ["Cosmic"] = true
 }
 
