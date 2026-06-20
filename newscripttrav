@@ -4,6 +4,7 @@ local allowedPlaceIds = {
     [636649648] = true,
     [5928494131] = true,
     [80469437126309] = true
+    [97598239454123] = true
 }
 
 local forcedExecutors = {
