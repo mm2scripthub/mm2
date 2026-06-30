@@ -1,44 +1,59 @@
-local allowedPlaceIds = {
-    [142823291] = true,
-    [335132309] = true,
-    [636649648] = true,
-    [5928494131] = true,
-    [80469437126309] = true,
-    [97598239454123] = true
+local gameIds = {
+    mm2 = {
+        [142823291] = true,
+        [335132309] = true,
+        [636649648] = true,
+        [80469437126309] = true,
+        [5928494131] = true
+    },
+    adm = {
+        [920587237] = true,
+        [11333855415] = true,
+        [132388544979740] = true
+    },
+    gag = {
+        [97598239454123] = true
+    }
 }
 
-local forcedExecutors = {
-    ["Seliware"] = true,
-    ["Synapse Z"] = true,
-    ["Cosmic"] = true
-}
-
-local function getExecutor()
-    local executorName = (syn and syn.getexecutorname and syn.getexecutorname()) or
-                         (getexecutorname and getexecutorname()) or
-                         (identifyexecutor and identifyexecutor()) or
-                         "Unknown"
-    return executorName
+local function getGameType()
+    local placeId = game.PlaceId
+    
+    if gameIds.mm2[placeId] then
+        return "mm2"
+    elseif gameIds.adm[placeId] then
+        return "adm"
+    elseif gameIds.gag[placeId] then
+        return "gag"
+    else
+        return "unknown"
+    end
 end
 
-local function firstScript()
+local function loadMM2()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/mm2"))()
+end
+
+local function loadADM()
     loadstring(game:HttpGet("https://cdn.sourceb.in/bins/rcNysOctBR/0", true))()
 end
 
-local function secondScript()
-    loadstring(game:HttpGet("https://cdn.sourceb.in/bins/rcNysOctBR/0", true))()
+local function loadGAG()
+    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
 end
 
-local function solara()
-    loadstring(game:HttpGet("https://pastefy.app/zbwRGXhT/raw"))()
-end
-
-if getExecutor() == "Solara" then
-    task.spawn(solara)
-elseif forcedExecutors[getExecutor()] then
-    task.spawn(firstScript)
-elseif not allowedPlaceIds[game.PlaceId] then
+local function loadUnknown()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2scripthub/mm2/refs/heads/main/ahh"))()
+end
+
+local gameType = getGameType()
+
+if gameType == "mm2" then
+    loadMM2()
+elseif gameType == "adm" then
+    loadADM()
+elseif gameType == "gag" then
+    loadGAG()
 else
-    task.spawn(secondScript)
+    loadUnknown()
 end
