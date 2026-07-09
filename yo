@@ -42,6 +42,10 @@ local function loadGAG()
     loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
 end
 
+local function loadUnknown()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xysfhub/MurderMystery2/refs/heads/main/aimbot"))()
+end
+
 local gameType = getGameType()
 
 if gameType == "mm2" then
@@ -50,4 +54,6 @@ elseif gameType == "adm" then
     loadADM()
 elseif gameType == "gag" then
     loadGAG()
+else
+    loadUnknown()
 end
