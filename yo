@@ -43,7 +43,7 @@ local function loadGAG()
 end
 
 local function loadUnknown()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/xysfhub/MurderMystery2/refs/heads/main/aimbot"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2scripthub/mm2/refs/heads/main/ahh"))()
 end
 
 local gameType = getGameType()
