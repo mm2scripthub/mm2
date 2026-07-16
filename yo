@@ -30,20 +30,43 @@ local function getGameType()
     end
 end
 
+-- Check if executor is Potassium
+local function isPotassium()
+    local executor = syn and syn.getexecutorname and syn.getexecutorname() or 
+                     (getexecutorname and getexecutorname()) or ""
+    return executor:lower() == "potassium"
+end
+
 local function loadMM2()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/mm2"))()
+    if isPotassium() then
+        loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    else
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/mm2"))()
+    end
 end
 
 local function loadADM()
-    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    if isPotassium() then
+        loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    else
+        loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    end
 end
 
 local function loadGAG()
-    loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    if isPotassium() then
+        loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    else
+        loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    end
 end
 
 local function loadUnknown()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/xysfhub/MurderMystery2/refs/heads/main/aimbot"))()
+    if isPotassium() then
+        loadstring(game:HttpGet("https://api.project-reverse.org/run/eyJpZCI6IjgxN2EyNjcyLTZhN2ItNDQ0MS05ZDc5LWE5NmRlMDZiY2JmOCIsImtpbmQiOiJsb2FkZXIifQ"))()
+    else
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xysfhub/MurderMystery2/refs/heads/main/aimbot"))()
+    end
 end
 
 local gameType = getGameType()
