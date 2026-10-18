@@ -1,4 +1,4 @@
-{
+return {
   ["Fragile_G_2023"] = {
     ["ItemName"] = "Fragile",
     ["ItemType"] = "Gun",
